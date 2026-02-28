@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+:root {
+  background-color: #f9fafb;
+}
+
+.btn-primary {
+  @apply bg-univ-green text-white px-4 py-2 rounded-lg hover:bg-univ-green-dark transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-white border border-univ-green text-univ-green px-4 py-2 rounded-lg hover:bg-univ-green-light transition-colors;
+}
+
+.card {
+  @apply bg-white p-6 rounded-xl shadow-sm border border-gray-100;
+}
+
+.input-field {
+  @apply w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-univ-green focus:border-transparent outline-none;
+}

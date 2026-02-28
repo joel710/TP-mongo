@@ -1,6 +1,6 @@
-# Système de Gestion Universitaire - Backend Node.js & MongoDB
+# Système de Gestion Universitaire - Fullstack Node.js & React
 
-Ce projet est un backend complet pour la gestion des étudiants, des cours et des notes au sein d'une université.
+Ce projet est une application complète pour la gestion des étudiants, des cours et des notes au sein d'une université.
 
 ## Table des matières
 1. [Installation](#installation)
@@ -12,12 +12,13 @@ Ce projet est un backend complet pour la gestion des étudiants, des cours et de
 
 ## Installation
 
-1. Cloner le projet.
+### Backend
+1. Naviguer vers la racine du projet.
 2. Installer les dépendances :
    ```bash
    npm install
    ```
-3. Configurer votre base de données MongoDB dans le fichier `.env` :
+3. Configurer votre base de données MongoDB dans le fichier `.env` (voir `.env.example`) :
    ```env
    MONGODB_URI=votre_uri_mongodb
    PORT=5000
@@ -27,17 +28,42 @@ Ce projet est un backend complet pour la gestion des étudiants, des cours et de
    npm start
    ```
 
+### Frontend (Client)
+1. Naviguer vers le dossier `client` :
+   ```bash
+   cd client
+   ```
+2. Installer les dépendances :
+   ```bash
+   npm install
+   ```
+3. Configurer l'URL de l'API dans le fichier `.env` (optionnel, par défaut `http://localhost:5000/api`) :
+   ```env
+   VITE_API_URL=http://localhost:5000/api
+   ```
+4. Lancer l'application React :
+   ```bash
+   npm run dev
+   ```
+
 ---
 
 ## Structure du Projet
 
 ```text
-src/
-├── config/         # Configuration de la base de données
-├── controllers/    # Logique métier des routes
-├── models/         # Schémas Mongoose (Student, Course, Grade)
-├── routes/         # Définition des endpoints API
-└── app.js          # Point d'entrée de l'application
+/
+├── src/            # Backend (Node.js)
+│   ├── config/     # Configuration de la DB
+│   ├── controllers/# Logique métier
+│   ├── models/     # Schémas Mongoose
+│   ├── routes/     # Endpoints API
+│   └── app.js      # Point d'entrée Backend
+├── client/         # Frontend (React + Vite + Tailwind)
+│   ├── src/
+│   │   ├── components/ # Composants React (StudentManager, CourseManager, ReportCard)
+│   │   ├── services/   # Service API Axios
+│   │   └── App.jsx     # Layout principal
+└── README.md       # Documentation & Cours
 ```
 
 ---
@@ -132,3 +158,4 @@ Pour calculer des moyennes, on utilise souvent le pipeline d'agrégation (`aggre
 - Toujours valider les données en entrée.
 - Utiliser des index pour accélérer les recherches fréquentes.
 - Gérer les erreurs de connexion à la base de données de manière robuste.
+- Sécuriser les entrées utilisateurs (ex: échapper les regex pour éviter les attaques ReDoS).
